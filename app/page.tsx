@@ -108,6 +108,8 @@ export default function Home() {
           </p>
         </a>
       </div>
+      
+      <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </main>
   )
 }
