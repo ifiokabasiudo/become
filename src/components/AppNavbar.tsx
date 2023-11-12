@@ -36,4 +36,5 @@ export default function AppNavbar() {
         </div>
         </div>
         </nav>
-    )}
+    )
+}
