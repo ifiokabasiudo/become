@@ -1,12 +1,12 @@
 import Supabase from '../../src/components/supabase'
-import AppNavbar from '../../src/components/AppNavbar'
+import AppNavbar from '../../src/components/navbar'
 
 export default function Scheduler() {
 
     return(
         <div>
             <Supabase />
-            {/* <AppNavbar /> */}
+            <AppNavbar />
             <h1>Hello</h1>
         </div>
     )
