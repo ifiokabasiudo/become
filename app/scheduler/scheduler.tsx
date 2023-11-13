@@ -1,3 +1,5 @@
+'use client'
+
 import supabase from '../../src/components/supabase'
 import AppNavbar from '../navbar'
 import Collection from './collections'
