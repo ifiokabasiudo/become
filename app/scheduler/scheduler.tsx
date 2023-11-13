@@ -2,7 +2,9 @@ import supabase from '../../src/components/supabase'
 import AppNavbar from '../navbar'
 import Collection from './collections'
 
-export default function Scheduler() {
+export default async function Scheduler( {session}: any ) {
+
+    console.log(session)
 
     return(
         <div>
