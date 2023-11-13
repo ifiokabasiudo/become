@@ -4,11 +4,16 @@ import Collection from './collections'
 
 export default async function Scheduler( {session}: any ) {
 
-    console.log("This is the session: " + JSON.stringify(session))
+    let username
+
+    if(session){
+        username = session.user.user_metadata.username
+        console.log("This is the user: " + username)
+    }
 
     return(
         <div>
-            <AppNavbar />
+            <AppNavbar username = {username}/>
             <div className='mt-28'>
                 <div className='border-b dark-nav-border-color flex flex-row text-left'>
                     <h1 className='mb-12 px-28 text-4xl'>Let's keep our day orgainized</h1>

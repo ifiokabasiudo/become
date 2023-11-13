@@ -13,7 +13,5 @@ export default async function Username() {
     data: { session },
   } = await supabase.auth.getSession()
 
-
-
   return <Scheduler session = {session} />
 }
