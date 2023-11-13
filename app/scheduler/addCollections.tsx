@@ -5,8 +5,10 @@ export default async function AddCollections() {
     }
 
     return (
-        <button onClick={openModal} className="py-5 px-20 bg-transparent w-full hover:bg-gray-500 text-white font-semibold hover:text-white border dark-nav-border-color rounded">
-            Add Collection
-        </button>
+        <div className="py-5 px-20">
+            <button onClick={openModal} className="bg-transparent w-full hover:bg-gray-500 text-white font-semibold hover:text-white border dark-nav-border-color rounded">
+                Add Collection
+            </button>
+        </div>
     )
 } 
