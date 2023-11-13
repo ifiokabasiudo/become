@@ -7,7 +7,7 @@ export default function Scheduler() {
         <div>
             <AppNavbar />
             <div>
-                <h1>Hello</h1>
+                <h1 className='mt-24'>Hello</h1>
             </div>
         </div>
     )
