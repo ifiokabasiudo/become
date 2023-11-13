@@ -1,6 +1,7 @@
 import supabase from '../../src/components/supabase'
 import AppNavbar from '../navbar'
 import Collection from './collections'
+import AddCollections from './addCollections'
 
 export default async function Scheduler( {session}: any ) {
 
@@ -19,7 +20,9 @@ export default async function Scheduler( {session}: any ) {
                     <h1 className='mb-12 px-28 text-4xl'>Let's keep our day orgainized</h1>
                 </div>
 
-                <div id='collections' className='py-5 px-20'>
+                <AddCollections />
+
+                <div id='collections'>
                     <Collection />
                 </div>
             </div>
