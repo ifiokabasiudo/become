@@ -85,7 +85,7 @@ export default function Signup({ session }: any) {
         </p>
       ) : (
           <form
-            className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+            className="flex flex-col w-full justify-center gap-2 text-foreground"
             onSubmit={handleSignUp}
           >
             <label className="text-md" htmlFor="email">
