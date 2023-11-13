@@ -6,7 +6,7 @@ export default async function AddCollections() {
 
     return (
         <div className="py-5 px-20">
-            <button onClick={openModal} className="bg-transparent w-full hover:bg-gray-500 text-white font-semibold hover:text-white border dark-nav-border-color rounded">
+            <button onClick={openModal} className="bg-transparent w-full hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded">
                 Add Collection
             </button>
         </div>

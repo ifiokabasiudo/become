@@ -26,4 +26,9 @@ body {
       --tw-border-opacity: 0.5;
       border-color: rgb(156 163 175 / var(--tw-border-opacity));
   }
+
+  .hover\:buttons:hover {
+    --tw-bg-opacity: 0.5;
+    background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  }
 }
