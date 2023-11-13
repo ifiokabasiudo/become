@@ -7,7 +7,7 @@ export default function Scheduler() {
         <div>
             <AppNavbar />
             <div className='border-b dark-nav-border-color flex flex-row text-left'>
-                <h1 className='mt-32 mb-24 ml-6 text-4xl'>Let's keep our day orgainized</h1>
+                <h1 className='mt-28 mb-16 ml-12 text-4xl'>Let's keep our day orgainized</h1>
             </div>
         </div>
     )
