@@ -31,7 +31,7 @@ export default function Login({session}: any) {
 
      if (data.user) {
        // Sign-in was successful, navigate to the home page or any other desired route.
-       router.push("/");
+       router.push("/scheduler");
        // Alternatively, you can use router.push('/') again to refresh the page.
      }
 
