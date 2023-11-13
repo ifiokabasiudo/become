@@ -4,7 +4,7 @@ import Collection from './collections'
 
 export default async function Scheduler( {session}: any ) {
 
-    console.log(session)
+    console.log("This is the session: " + session)
 
     return(
         <div>
