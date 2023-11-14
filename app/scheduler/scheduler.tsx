@@ -22,8 +22,8 @@ export default async function Scheduler( {session}: any ) {
     }
 
     const sidebar = `transition-all duration-500 absolute right-0 top-0 h-[100vh] ${
-        openSidebar ? `w-[40%]` : `w-0`
-    } bg-black border-l dark-nav-border-color z-10`
+        openSidebar ? `w-[40%] border-l dark-nav-border-color` : `w-0`
+    } bg-black z-10`
 
     return(
         <div>
