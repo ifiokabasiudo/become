@@ -27,7 +27,7 @@ export default async function Scheduler( {session}: any ) {
 
             {/* {
                     openSidebar && ( */}
-                        <div className='absolute right-0 top-0 h-[100vh] w-[40%] bg-white z-10'>
+                        <div className='absolute right-0 top-0 h-[100vh] w-[40%] bg-black z-10'>
                             <p>Just thought I should add something in here</p> 
                         </div>
                     {/* )
