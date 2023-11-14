@@ -32,7 +32,11 @@ export default async function Scheduler( {session}: any ) {
             {/* {
                     openSidebar && ( */}
                         <div className={sidebar}>
-                            <p>Just thought I should add something in here</p> 
+                            {
+                                openSidebar ? 
+                                <p>Just thought I should add something in here</p> :
+                                <></>
+                            }
                         </div>
                     {/* )
             } */}
