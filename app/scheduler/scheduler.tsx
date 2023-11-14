@@ -6,7 +6,7 @@ import Collection from './collections'
 // import AddCollections from './addCollections'
 import { useState } from 'react'
 
-export default async function Scheduler( {session}: any ) {
+export default function Scheduler( {session}: any ) {
     const [openSidebar, setOpenSidebar] = useState(false)
 
     const openModal = () => {
@@ -21,7 +21,7 @@ export default async function Scheduler( {session}: any ) {
         console.log("This is the user: " + username)
     }
 
-    const sidebar = `transition-all duration-500 absolute right-0 top-0 h-[100vh] ${
+    const sidebar = `transition-all flex flex-col align-middle text-center duration-1000 absolute right-0 top-0 h-[100vh] ${
         openSidebar ? `w-[40%] border-l dark-nav-border-color` : `w-0`
     } bg-black z-10`
 
@@ -29,18 +29,13 @@ export default async function Scheduler( {session}: any ) {
         <div>
             <AppNavbar username = {username}/>
 
-            {/* {
-                    openSidebar && ( */}
-                        <div className={sidebar}>
-                            {
-                                openSidebar ? 
-                                <p>Just thought I should add something in here</p> :
-                                <></>
-                            }
-                        </div>
-                    {/* )
-            } */}
-
+            <div className={sidebar}>
+                {
+                    openSidebar &&
+                    <p className="px-10 w-[100%] mt-40">Just thought I should add something in here</p>
+                }
+            </div>
+ 
             <div className='mt-28 relative'>                
                 <div className='border-b dark-nav-border-color flex flex-row text-left'>
                     <h1 className='mb-12 px-28 text-4xl'>Let's keep our day orgainized</h1>
