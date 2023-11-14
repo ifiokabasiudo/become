@@ -4,15 +4,15 @@ import supabase from '../../src/components/supabase'
 import AppNavbar from '../navbar'
 import Collection from './collections'
 // import AddCollections from './addCollections'
-// import { useState } from 'react'
+import { useState } from 'react'
 
 export default async function Scheduler( {session}: any ) {
-    // const [openSidebar, setOpenSidebar] = useState(false)
+    const [openSidebar, setOpenSidebar] = useState(false)
 
-    // const openModal = () => {
-    //     console.log("The modal was opened")
-    //     setOpenSidebar(true)
-    // }
+    const openModal = () => {
+        console.log("The modal was opened")
+        setOpenSidebar(true)
+    }
 
     let username
 
@@ -21,13 +21,17 @@ export default async function Scheduler( {session}: any ) {
         console.log("This is the user: " + username)
     }
 
+    const sidebar = `transition-all duration-500 absolute right-0 top-0 h-[100vh] ${
+        openSidebar ? `w-[40%]` : `w-0`
+    } bg-black border-l dark-nav-border-color z-10`
+
     return(
         <div>
             <AppNavbar username = {username}/>
 
             {/* {
                     openSidebar && ( */}
-                        <div className='absolute right-0 top-0 h-[100vh] w-[40%] bg-black border-l dark-nav-border-color z-10'>
+                        <div className={sidebar}>
                             <p>Just thought I should add something in here</p> 
                         </div>
                     {/* )
@@ -39,7 +43,7 @@ export default async function Scheduler( {session}: any ) {
                 </div>
 
                 <div className="py-5 px-28">
-                    <button className="py-2 bg-transparent w-full hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded">
+                    <button onClick={openModal} className="py-2 bg-transparent w-full hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded">
                         Add Collection
                     </button>
                 </div>
