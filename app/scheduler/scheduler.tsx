@@ -24,14 +24,16 @@ export default async function Scheduler( {session}: any ) {
     return(
         <div>
             <AppNavbar username = {username}/>
-            <div className='mt-28 relative'>
-                {/* {
+
+            {/* {
                     openSidebar && ( */}
                         <div className='absolute right-0 top-0 h-[100vh] w-[40%] bg-white z-10'>
                             <p>Just thought I should add something in here</p> 
                         </div>
                     {/* )
-                } */}
+            } */}
+
+            <div className='mt-28 relative'>                
                 <div className='border-b dark-nav-border-color flex flex-row text-left'>
                     <h1 className='mb-12 px-28 text-4xl'>Let's keep our day orgainized</h1>
                 </div>
