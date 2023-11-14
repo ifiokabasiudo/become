@@ -30,7 +30,7 @@ export default function Scheduler( {session}: any ) {
         openSidebar ? `w-[40%] border-l dark-nav-border-color` : `w-0`
     } bg-black z-10`
 
-    const sidebarContent = `${ openSidebar ? `` : `hidden`}`
+    // const sidebarContent = `${ openSidebar ? `` : `hidden`}`
 
     return(
         <div>

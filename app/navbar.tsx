@@ -17,7 +17,7 @@ export default function AppNavbar( { username }: any ) {
             <h1 className="text-3xl ml-6 mt-4 mb-4">Scheduler</h1>
             </div>
             <div className="text-right mr-6 mt-4 mb-4">
-            <h2 className="text-xl">{username}</h2>
+            <h2 className="text-xl">Hi, {" "} {username}</h2>
             </div>
         </nav>
         </div>
