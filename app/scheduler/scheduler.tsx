@@ -14,6 +14,11 @@ export default function Scheduler( {session}: any ) {
         setOpenSidebar(true)
     }
 
+    const closeModal = () => {
+        console.log("The modal was opened")
+        setOpenSidebar(false)
+    }
+
     let username
 
     if(session){
@@ -21,9 +26,11 @@ export default function Scheduler( {session}: any ) {
         console.log("This is the user: " + username)
     }
 
-    const sidebar = `transition-all flex flex-col align-middle text-center duration-1000 absolute right-0 top-0 h-[100vh] ${
+    const sidebar = `transition-all flex flex-col text-center duration-1000 overflow-hidden absolute right-0 top-0 h-[100vh] ${
         openSidebar ? `w-[40%] border-l dark-nav-border-color` : `w-0`
     } bg-black z-10`
+
+    const sidebarContent = `${ openSidebar ? `` : `hidden`}`
 
     return(
         <div>
@@ -31,8 +38,12 @@ export default function Scheduler( {session}: any ) {
 
             <div className={sidebar}>
                 {
-                    openSidebar &&
-                    <p className="px-10 w-[100%] mt-40">Just thought I should add something in here</p>
+                    openSidebar && (<>
+                    <p className="w-[100%] px-10 mt-40">Just thought I should add something in here</p>
+                    <button onClick={closeModal} className="py-2 bg-transparent w-[30%] mx-[auto] my-5 hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded">
+                        Done
+                    </button>
+                    </>)
                 }
             </div>
  
