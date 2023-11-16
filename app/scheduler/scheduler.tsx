@@ -110,7 +110,7 @@ export default function Scheduler({ session }: any) {
   } mx-[auto] m-1 dark-nav-border-color text-md text-gray-100 hover:bg-gray-100 hover:text-gray-300 rounded`;
   const customDropdownListStyle = `
     ${
-      dropdownOpen ? "max-h-96 border" : "max-h-0 -top-8"
+      dropdownOpen ? "max-h-96 border overflow-y-scroll" : "max-h-0 -top-8"
     } // Set the maximum height based on the open state
     overflow-hidden
     transition-all
