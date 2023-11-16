@@ -1,9 +1,9 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
-import Scheduler from "./scheduler"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import Scheduler from "./scheduler";
 
 export default async function Username() {
-  const supabase = createServerComponentClient({ cookies })
+  const supabase = createServerComponentClient({ cookies });
 
   // const {
   //   data: { user },
@@ -11,7 +11,7 @@ export default async function Username() {
 
   const {
     data: { session },
-  } = await supabase.auth.getSession()
+  } = await supabase.auth.getSession();
 
-  return <Scheduler session = {session} />
+  return <Scheduler session={session} />;
 }

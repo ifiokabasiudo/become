@@ -32,3 +32,24 @@ body {
     background-color: rgb(107 114 128 / var(--tw-bg-opacity));
   }
 }
+
+option { 
+  /* Whatever color  you want */
+  background-color: #82caff;
+  border-radius: 5px;
+}
+
+.bg-card {
+  /* color: rgb(var(--foreground-rgb)); */
+  background: rgb(12, 12, 12);
+}
+
+.button-color {
+  --tw-border-opacity: 0.3;
+  background-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.button-color:hover {
+  --tw-border-opacity: 0.1;
+  background-color: rgb(156 163 175 / var(--tw-border-opacity)); 
+}
