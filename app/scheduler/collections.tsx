@@ -88,7 +88,7 @@ const Collection = ({ session }: any) => {
           <div className="bg-transparent min-h-[2rem] flex flex-row justify-end items-center">
             <button
               onClick={openAddActivityModal}
-              className="transition-all ease-in-out mt-2 mb-2 p-1 bg-transparent rounded border dark-nav-border-color"
+              className="transition-all ease-in-out mt-2 mb-2 p-1 bg-transparent rounded border dark-nav-border-color hover:bg-gray-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ const Collection = ({ session }: any) => {
               </svg>
             </button>
 
-            <button className="transition-all ease-in-out mt-2 mb-2 mr-2 ml-2 p-1 bg-transparent rounded border dark-nav-border-color hover:bg-gray-950">
+            <button className="transition-all ease-in-out mt-2 mb-2 mr-2 ml-2 p-1 bg-transparent rounded border dark-nav-border-color hover:bg-gray-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
