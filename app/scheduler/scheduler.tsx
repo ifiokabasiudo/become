@@ -257,7 +257,7 @@ export default function Scheduler({ session }: any) {
         <div className="py-5 px-28">
           <button
             onClick={openModal}
-            className="py-2 bg-transparent w-full hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded"
+            className="py-2 transition-all ease-in-out bg-transparent w-full hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded"
           >
             Add Schedule
           </button>
