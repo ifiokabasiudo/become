@@ -53,3 +53,23 @@ option {
   --tw-border-opacity: 0.1;
   background-color: rgb(156 163 175 / var(--tw-border-opacity)); 
 }
+
+::-webkit-scrollbar {
+    width: 1px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: "none";
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: 'none';
+    border-radius: 4px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: 'none';
+}
