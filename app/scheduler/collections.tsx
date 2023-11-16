@@ -78,7 +78,7 @@ const Collection = ({ session }: any) => {
           className="rounded shadow-md border dark-nav-border-color"
         >
           <div
-            className="bg-gray-200 px-4 py-3"
+            className="bg-gray-200 px-4 py-3 rounded-t"
             style={{ backgroundImage: scheduler.color }}
           >
             <h3 className="text-lg font-semibold mb-2">{scheduler.name}</h3>
