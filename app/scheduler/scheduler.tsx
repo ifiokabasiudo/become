@@ -3,6 +3,8 @@
 import supabase from "../../src/components/supabase";
 import AppNavbar from "../navbar";
 import Collection from "./collections";
+import { Calendar } from "@/components/ui/calendar";
+import { DateTimePicker } from "@/components/ui/date-time-picker"
 import { useState } from "react";
 
 // ... (previous imports)
@@ -10,6 +12,7 @@ import { useState } from "react";
 export default function Scheduler({ session }: any) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [schedulerName, setSchedulerName] = useState("");
+  const [date, setDate] = useState(new Date());
   const [selectedColor, setSelectedColor] = useState("none"); // Default color
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedLabel, setSelectedlabel] = useState(
@@ -99,7 +102,7 @@ export default function Scheduler({ session }: any) {
     zIndex: 9, // Higher z-index than the sidebar
   };
 
-  const sidebarStyle = `transition-all flex flex-col text-left duration-1000 overflow-hidden absolute right-0 top-0 h-[100vh] ${
+  const sidebarStyle = `transition-all flex flex-col text-left duration-1000 overflow-hidden fixed right-0 top-0 h-full ${
     openSidebar ? `w-[40%] border-l dark-nav-border-color px-10` : `w-0`
   } bg-black z-10`;
 
@@ -129,14 +132,9 @@ export default function Scheduler({ session }: any) {
     -z-10
   `;
 
-  // Define an array of color options
-  // const colorOptions = [
-  //   { value: "#800080", label: "Purple" },
-  //   { value: "#FF0000", label: "Red" },
-  //   { value: "linear-gradient(to right, #ff8a00, #da1b60)", label: "Gradient" },
-  //   { value: "#0000FF", label: "Blue" },
-  //   // Add more color options as needed
-  // ];
+  // const schedulerContainer = `
+  // ${openSidebar ? `` : ``}
+  // `
 
   const colorOptions = [
     // { value: "linear-gradient(to right, #f06, #9f6)", label: "Greenish" },
@@ -208,6 +206,11 @@ export default function Scheduler({ session }: any) {
               Enter the name of the scheduler
             </h5>
 
+            <Calendar 
+              mode="single"
+              selected={date}
+            />
+
             <h4 className="w-[100%] mt-4 mb-2 text-md text-gray-400">Color</h4>
             <div className={customDropdownStyle}>
               <button
@@ -252,6 +255,7 @@ export default function Scheduler({ session }: any) {
       <div className="mt-28 relative mb-20">
         <div className="border-b dark-nav-border-color flex flex-row text-left">
           <h1 className="mb-12 px-28 text-4xl">Let's keep our day organized</h1>
+          <DateTimePicker date={date} setDate={setDate} />
         </div>
 
         <div className="py-5 px-28">
@@ -270,81 +274,3 @@ export default function Scheduler({ session }: any) {
     </div>
   );
 }
-
-// export default function Scheduler({ session }: any) {
-//   const [openSidebar, setOpenSidebar] = useState(false)
-
-//   const openModal = () => {
-//     console.log("The modal was opened")
-//     setOpenSidebar(true)
-//   }
-
-//   const closeModal = () => {
-//     console.log("The modal was closed")
-//     setOpenSidebar(false)
-//   }
-
-//   let username
-
-//   if (session) {
-//     username = session.user.user_metadata.username
-//     console.log("This is the user: " + username)
-//   }
-
-//   const overlayStyle: React.CSSProperties = {
-//     display: openSidebar ? 'block' : 'none',
-//     position: 'fixed',
-//     top: 0,
-//     left: 0,
-//     width: '100%',
-//     height: '100%',
-//     backgroundColor: 'rgba(30, 30, 30, 0.7)', // Semi-transparent background
-//     zIndex: 9, // Higher z-index than the sidebar
-//   }
-
-//   const sidebarStyle = `transition-all flex flex-col text-center duration-1000 overflow-hidden absolute right-0 top-0 h-[100vh] ${
-//     openSidebar ? `w-[40%] border-l dark-nav-border-color` : `w-0`
-//   } bg-black z-10`
-
-//   return (
-//     <div>
-//       <AppNavbar username={username} />
-
-//       <div style={overlayStyle} onClick={closeModal}></div>
-
-//       <div className={sidebarStyle}>
-//         {openSidebar && (
-//           <>
-//             <h3 className="w-[100%] px-10 mt-28 text-xl">Add a schedule</h3>
-//             <p className='py-3'>This is a way to group schedules</p>
-//             <button
-//               onClick={closeModal}
-//               className="py-2 bg-transparent w-[30%] mx-[auto] my-5 hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded"
-//             >
-//               Done
-//             </button>
-//           </>
-//         )}
-//       </div>
-
-//       <div className='mt-28 relative'>
-//         <div className='border-b dark-nav-border-color flex flex-row text-left'>
-//           <h1 className='mb-12 px-28 text-4xl'>Let's keep our day organized</h1>
-//         </div>
-
-//         <div className="py-5 px-28">
-//           <button
-//             onClick={openModal}
-//             className="py-2 bg-transparent w-full hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded"
-//           >
-//             Add Schedule
-//           </button>
-//         </div>
-
-//         <div id='collections'>
-//           <Collection />
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }

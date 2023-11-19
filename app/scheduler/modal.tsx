@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   };
 
   const modalStyle: React.CSSProperties = {
-    width: "20%",
+    width: "30%",
     display: "block",
     overflow: "hidden",
     borderWidth: "0.5px",
@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     opacity: isOpen ? 1 : 0, // Set opacity for animation
     transition: "transform 0.3s ease, opacity 0.3s ease", // Add transition property
     backgroundColor: "#0C0C0C",
-    padding: "20px",
+    padding: "35px",
     borderRadius: "8px",
     zIndex: 101, // Higher z-index than the overlay
   };

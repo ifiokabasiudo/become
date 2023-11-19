@@ -21,6 +21,11 @@ body {
   background: rgb(12, 12, 12);
 }
 
+.hover\:buttons:hover {
+  --tw-bg-opacity: 0.5;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity)) !important;
+}
+
 @media (prefers-color-scheme: dark) {
   .dark-nav-border-color {
       --tw-border-opacity: 0.5;
@@ -29,9 +34,21 @@ body {
 
   .hover\:buttons:hover {
     --tw-bg-opacity: 0.5;
-    background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+    background-color: rgb(107 114 128 / var(--tw-bg-opacity)) !important;
   }
+
 }
+
+.hover\:today:hover {
+  /* --tw-bg-opacity: 0.5; */
+  background-color: rgb(42, 138, 91) !important;
+}
+
+.ring-offset-color {
+  --tw-bg-opacity: 0.5;
+  --tw-ring-offset-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
 
 option { 
   /* Whatever color  you want */

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../../src/components/supabase";
+import { Calendar } from "@/components/ui/calendar"
 import Modal from "./modal";
 
 type Scheduler = {
@@ -10,7 +11,12 @@ type Scheduler = {
 
 const Collection = ({ session }: any) => {
   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
+  const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(null);
   const [openModal, setOpenModal] = useState(false);
+  const [content, setContent] = useState("");
+  const [activityName, setActivityName] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
 
   let userId: any;
 
@@ -62,13 +68,19 @@ const Collection = ({ session }: any) => {
     };
   }, [supabase]); // Run this effect only once on component mount
 
-  const openAddActivityModal = () => {
-    setOpenModal(true);
-  };
+  const openAddActivityModal = (scheduler: Scheduler) => {
+  setOpenModal(true);
+  setSelectedScheduler(scheduler);
+  setContent(scheduler.name); // Set other content if needed
+};
 
   const closeAddActivityModal = () => {
     setOpenModal(false);
   };
+
+  const handleSubmit = () => {
+    
+  }
 
   return (
     <div className="grid grid-cols-3 gap-4 mx-28">
@@ -87,7 +99,7 @@ const Collection = ({ session }: any) => {
           <div className="border-b min-h-[100px] bg-card dark-nav-border-color"></div>
           <div className="bg-transparent min-h-[2rem] flex flex-row justify-end items-center">
             <button
-              onClick={openAddActivityModal}
+              onClick={() => openAddActivityModal(scheduler)}
               className="transition-all ease-in-out mt-2 mb-2 p-1 bg-transparent rounded border dark-nav-border-color hover:buttons"
             >
               <svg
@@ -129,8 +141,34 @@ const Collection = ({ session }: any) => {
        {/* Render the modal conditionally based on the state */}
        <Modal isOpen={openModal} onClose={closeAddActivityModal}>
         {/* Content of your modal goes here */}
-        <h1>Add Activity</h1>
-        <p>This is the content of your modal.</p>
+        <div className="text-left">
+          <h3 className="text-2xl py-2">Add activities</h3>
+          <p className="text-lg pb-2 text-gray-400">Add activities to the {" "} {content} {" "} schedule</p>
+        
+
+
+          <form onSubmit={handleSubmit}>
+          <label className="block text-lg pb-2">Activity Details</label>
+          <textarea
+            value={activityName}
+            placeholder="Please enter details of the activity"
+            onChange={(e) => setActivityName(e.target.value)}
+            className="mt-1 p-2 border rounded bg-transparent dark-nav-border-color w-[100%] min-h-[100px] resize-y"
+            style={{ lineHeight: '1.5' }}
+            required
+          />
+
+          <Calendar />
+          
+          <button
+            type="submit"
+            className="text-left py-2 px-2 mx-[auto] bg-transparent w-[100%] my-5 hover:buttons text-white font-semibold hover:text-white border dark-nav-border-color rounded"
+            style={{ backgroundImage: selectedScheduler ? selectedScheduler.color : '' }}
+          >
+            Done
+          </button>
+        </form>
+        </div>
       </Modal>
     </div>
   );
