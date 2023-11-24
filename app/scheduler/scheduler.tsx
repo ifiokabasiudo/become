@@ -105,7 +105,7 @@ export default function Scheduler({ session }: any) {
   } bg-black z-10`;
 
   const customDropdownStyle = `relative inline-block text-left`;
-  const customDropdownButtonStyle = `py-2 px-4 border dark-nav-border-color rounded w-[100%] bg-black z-50 text-left`;
+  const customDropdownButtonStyle = `relative py-2 px-4 border dark-nav-border-color rounded w-[100%] bg-black z-50 text-left`;
   const colorOptionsStyle = `transition-all duration-500 text-left pl-2 hover:pl-7 z-0 block w-[98%] ${
     dropdownOpen ? `border` : `hidden`
   } mx-[auto] m-1 dark-nav-border-color text-md text-gray-100 hover:bg-gray-100 hover:text-gray-300 rounded`;
@@ -213,6 +213,37 @@ export default function Scheduler({ session }: any) {
                 style={{ backgroundImage: selectedColor, color: "#FFFFFF" }}
               >
                 {selectedLabel}
+
+                <div className="flex flex-col gap-1 items-center absolute top-1/2 transform -translate-y-1/2 right-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </div>
               </button>
               <div className={customDropdownListStyle}>
                 {colorOptions.map((option) => (
