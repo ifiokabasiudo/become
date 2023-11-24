@@ -155,7 +155,7 @@ const Collection = ({ session }: any) => {
       }
     }
 
-    setSchedulers([...schedulers]); // Update state to trigger re-render
+    setSchedulers((prevSchedulers) => [...prevSchedulers])// Update state to trigger re-render
   };
 
   useEffect(() => {
