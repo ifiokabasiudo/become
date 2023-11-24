@@ -123,6 +123,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
   const handleDone = () => {
     setButtonClicked(true)
   }
+
+  const overlayClickHandler = () => {
+    handleReset();
+    onClose();
+  };
   
   const overlayStyle: React.CSSProperties = {
     display: isOpen ? "block" : "none",
@@ -156,7 +161,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
 
   return (
     <>
-      <div style={overlayStyle} onClick={onClose}></div>
+      <div style={overlayStyle} onClick={overlayClickHandler}></div>
       <div style={modalStyle}>
       <div className="text-left">
           <h3 className="text-2xl py-2">Add activities</h3>
