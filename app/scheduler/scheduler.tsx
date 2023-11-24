@@ -214,7 +214,7 @@ export default function Scheduler({ session }: any) {
               >
                 {selectedLabel}
 
-                <div className="flex flex-col py-2 gap-1 items-center absolute top-1/2 transform -translate-y-1/2 right-2">
+                <div className="flex flex-col py-2 gap-0 items-center absolute top-1/2 transform -translate-y-1/2 right-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
