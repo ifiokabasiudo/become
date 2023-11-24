@@ -214,14 +214,14 @@ export default function Scheduler({ session }: any) {
               >
                 {selectedLabel}
 
-                <div className="flex flex-col gap-1 items-center absolute top-1/2 transform -translate-y-1/2 right-2">
+                <div className="flex flex-col py-2 gap-1 items-center absolute top-1/2 transform -translate-y-1/2 right-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-3 h-3"
                   >
                     <path
                       stroke-linecap="round"
@@ -235,7 +235,7 @@ export default function Scheduler({ session }: any) {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-3 h-3"
                   >
                     <path
                       stroke-linecap="round"
