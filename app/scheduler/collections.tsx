@@ -234,7 +234,7 @@ const Collection = ({ session }: any) => {
     // Compare the difference in seconds
     const timeDifference = currentDate.diff(activityDate).as('seconds');
   
-    return timeDifference > 0;
+    return timeDifference >= 0;
   };
 
   const handleCompleted = async (activityId: number) => {
