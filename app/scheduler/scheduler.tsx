@@ -245,7 +245,7 @@ export default function Scheduler({ session }: any) {
         )}
       </div>
 
-      <div className="mt-28 relative mb-20">
+      <div className="mt-28 relative mb-20 overflow-y-scroll">
         <div className="border-b dark-nav-border-color flex flex-row text-left">
           <h1 className="mb-12 px-28 text-4xl">Let's keep our day organized</h1>
         </div>
