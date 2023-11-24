@@ -191,7 +191,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
                   {buttonClicked ? (
                     selectedDateTime.toFormat("DDD HH:mm")
                   ) : (
-                    <span className="z-[200]" onClick={handleDone}>No Expirary Date</span>
+                    <span onClick={handleDone}>No Expirary Date</span>
                   )}
                 </Button>
               </PopoverTrigger>
