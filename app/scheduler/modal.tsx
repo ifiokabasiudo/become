@@ -52,7 +52,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
     setActivityDetails("");
     setContent("");
     setActivityName("");
-    setButtonClicked(false);
     setIsDateSelected(false);
     setDate(new Date());
     setSelectedDateTime(DateTime.fromJSDate(new Date()));

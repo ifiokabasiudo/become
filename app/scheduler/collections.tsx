@@ -230,7 +230,11 @@ const Collection = ({ session }: any) => {
   const isActivityExpired = (activityDateTime: string) => {
     const activityDate = DateTime.fromISO(activityDateTime);
     const currentDate = DateTime.now();
-    return currentDate > activityDate;
+  
+    // Compare the difference in seconds
+    const timeDifference = currentDate.diff(activityDate).as('seconds');
+  
+    return timeDifference > 0;
   };
 
   const handleCompleted = async (activityId: number) => {
@@ -328,7 +332,10 @@ const Collection = ({ session }: any) => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className={`${
+                    className={`
+                      transition-all
+                      cursor-none
+                      ${
                       isActivityExpired(activity.date_time) ||
                       completedActivities.includes(activity.id)
                         ? `hidden`
