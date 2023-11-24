@@ -33,6 +33,7 @@ type Scheduler = {
 
 const Collection = ({ session }: any) => {
   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
+  const [shouldRunEffect, setShouldRunEffect] = useState(true);
   const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
     null
   );
@@ -93,6 +94,7 @@ const Collection = ({ session }: any) => {
 
   useEffect(() => {
     // Fetch scheduler data from Supabase
+    if(shouldRunEffect) {
     const fetchSchedulers = async () => {
       const { data, error } = await supabase
         .from("schedulers")
@@ -136,8 +138,8 @@ const Collection = ({ session }: any) => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [supabase]); // Run this effect only once on component mount
-
+  }
+  }, [supabase, shouldRunEffect]); // Run this effect only once on component mount
   // Fetch activities data from Supabase
   const fetchActivities = async () => {
     // Fetch activities associated with each scheduler
@@ -160,6 +162,7 @@ const Collection = ({ session }: any) => {
 
   useEffect(() => {
     // ... (existing useEffect code)
+    if(shouldRunEffect){
     fetchActivities();
 
     const activitiesChannel = supabase
@@ -182,9 +185,9 @@ const Collection = ({ session }: any) => {
     return () => {
       supabase.removeChannel(activitiesChannel);
     };
-
+    }
     // ... (existing code)
-  }, [supabase, schedulers]);
+  }, [supabase, schedulers, shouldRunEffect]);
 
   const closeAddActivityModal = () => {
     setOpenModal(false);
@@ -209,6 +212,7 @@ const Collection = ({ session }: any) => {
   };
 
   const handleDelete = (deletedSchedulerId: number) => {
+    setShouldRunEffect(false)
     setSchedulers((prevSchedulers) =>
       prevSchedulers.filter((scheduler) => scheduler.id !== deletedSchedulerId)
     );
