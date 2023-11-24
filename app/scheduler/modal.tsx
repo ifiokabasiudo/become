@@ -178,6 +178,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
             <Popover>
               <PopoverTrigger asChild className="z-[105] bg-transparent">
                 <Button
+                  onClick={handleDone}
                   suppressHydrationWarning
                   // onClick={handleCalendarClick}
                   variant={"outline"}
@@ -191,7 +192,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
                   {buttonClicked ? (
                     selectedDateTime.toFormat("DDD HH:mm")
                   ) : (
-                    <span onClick={handleDone}>No Expirary Date</span>
+                    <span>No Expirary Date</span>
                   )}
                 </Button>
               </PopoverTrigger>
