@@ -90,3 +90,15 @@ option {
 ::-webkit-scrollbar-thumb:hover {
     background: 'none';
 }
+
+.expired-activity {
+  background-color: rgb(255, 0, 0);
+}
+
+.completed-activity {
+  background-color: rgb(0, 255, 0);
+}
+
+/* .activity-item {
+  background-color: transparent;
+} */

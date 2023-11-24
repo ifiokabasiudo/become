@@ -4,7 +4,6 @@ import supabase from "../../src/components/supabase";
 import AppNavbar from "../navbar";
 import Collection from "./collections";
 import { Calendar } from "@/components/ui/calendar";
-import { DateTimePicker } from "@/components/ui/date-time-picker"
 import { useState } from "react";
 
 // ... (previous imports)
@@ -12,7 +11,6 @@ import { useState } from "react";
 export default function Scheduler({ session }: any) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [schedulerName, setSchedulerName] = useState("");
-  const [date, setDate] = useState(new Date());
   const [selectedColor, setSelectedColor] = useState("none"); // Default color
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedLabel, setSelectedlabel] = useState(
@@ -206,11 +204,6 @@ export default function Scheduler({ session }: any) {
               Enter the name of the scheduler
             </h5>
 
-            <Calendar 
-              mode="single"
-              selected={date}
-            />
-
             <h4 className="w-[100%] mt-4 mb-2 text-md text-gray-400">Color</h4>
             <div className={customDropdownStyle}>
               <button
@@ -255,7 +248,6 @@ export default function Scheduler({ session }: any) {
       <div className="mt-28 relative mb-20">
         <div className="border-b dark-nav-border-color flex flex-row text-left">
           <h1 className="mb-12 px-28 text-4xl">Let's keep our day organized</h1>
-          <DateTimePicker date={date} setDate={setDate} />
         </div>
 
         <div className="py-5 px-28">
