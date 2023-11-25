@@ -79,6 +79,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
 
     setSelectedDateTime(modifiedDay);
     setDate(modifiedDay.toJSDate());
+
+    setIsDateSelected(true);
   };
 
   const footer = (
@@ -122,6 +124,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
 
   const handleDone = () => {
     setButtonClicked(true)
+    setIsDateSelected(true)
   }
 
   const overlayClickHandler = () => {
