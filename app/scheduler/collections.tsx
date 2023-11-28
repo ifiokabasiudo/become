@@ -34,6 +34,7 @@ type Scheduler = {
 const Collection = ({ session }: any) => {
   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
   const [shouldRunEffect, setShouldRunEffect] = useState(true);
+  const [shouldRunCompleted, setShouldRunCompleted] = useState(true);
   const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
     null
   );
@@ -174,11 +175,24 @@ const Collection = ({ session }: any) => {
           schema: "public",
           table: "activities",
         },
-        (payload) => {
+        (payload: any) => {
           // Handle real-time changes to activities
           console.log("Real-time activity update:", payload);
           fetchActivities(); // Update activities when changes occur
-        }
+          if (payload.new.id === selectedScheduler?.id) { //////////////////////////////////////////////////
+            setCompletedActivities((prevCompletedActivities) => {
+              if (payload.new.completed) {
+                // If the activity was marked as completed, add it to the state
+                return [...prevCompletedActivities, payload.new.id];
+              } else {
+                // If the activity was marked as not completed, remove it from the state
+                return prevCompletedActivities.filter(
+                  (id) => id !== payload.new.id
+                );
+              }
+        })
+      }
+    }
       )
       .subscribe();
 
@@ -252,17 +266,27 @@ const Collection = ({ session }: any) => {
         return;
       }
 
-      // Fetch the updated activities from Supabase
-      const updatedActivities = await supabase
-        .from("activities")
-        .select("id", { head: true });
+      setCompletedActivities((prevCompletedActivities) => {//////////////////////////////////////////////////
+      if (!isCompleted) {
+        // If the activity was marked as completed, add it to the state
+        return [...prevCompletedActivities, activityId];
+      } else {
+        // If the activity was marked as not completed, remove it from the state
+        return prevCompletedActivities.filter((id) => id !== activityId);
+      }
+    });
 
-      // Update completedActivities state based on the response
-      const updatedCompletedActivities = updatedActivities.data?.map(
-        (activity) => activity.id
-      );
+      // // Fetch the updated activities from Supabase
+      // const updatedActivities = await supabase
+      //   .from("activities")
+      //   .select("id", { head: true });
 
-      setCompletedActivities(updatedCompletedActivities || []);
+      // // Update completedActivities state based on the response
+      // const updatedCompletedActivities = updatedActivities.data?.map(
+      //   (activity) => activity.id
+      // );
+
+      // setCompletedActivities(updatedCompletedActivities || []);
     } catch (error) {
       console.error("Error handling completion:", error);
     }
