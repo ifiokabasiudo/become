@@ -57,7 +57,7 @@ export default function Signup({ session }: any) {
   // router.refresh()
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center w-full px-8 sm:max-w-md gap-2">
+    <div className="flex flex-col items-center justify-center h-[100vh] w-full px-8">
       <Link
         href="/"
         className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
@@ -85,7 +85,7 @@ export default function Signup({ session }: any) {
         </p>
       ) : (
           <form
-            className="flex flex-col w-full justify-center gap-2 text-foreground"
+            className="flex flex-col w-full justify-center gap-2 text-foreground sm:max-w-md"
             onSubmit={handleSignUp}
           >
             <label className="text-md" htmlFor="email">

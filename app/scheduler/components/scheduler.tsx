@@ -1,17 +1,15 @@
 "use client";
 
-import supabase from "../../src/components/supabase";
-import AppNavbar from "../navbar";
+import supabase from "../../../src/components/supabase";
+import AppNavbar from "./navbar";
 import Collection from "./collections";
-import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 
-// ... (previous imports)
 
 export default function Scheduler({ session }: any) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [schedulerName, setSchedulerName] = useState("");
-  const [selectedColor, setSelectedColor] = useState("none"); // Default color
+  const [selectedColor, setSelectedColor] = useState("none"); 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedLabel, setSelectedlabel] = useState(
     "Choose your Schedule Color"
@@ -32,22 +30,16 @@ export default function Scheduler({ session }: any) {
     setSchedulerName(e.target.value);
   };
 
-  // const handleColorSelect = () => {
-  //    // Toggle the dropdown visibility
-  // };
-
   const handleForceCloseDropdown = () => {
     if (dropdownOpen) {
       setDropdownOpen(false);
       console.log("It closed");
     }
-    // setSelectedColor(e.target.value);
   };
 
   const handleColorSelect = () => {
     setDropdownOpen(!dropdownOpen);
     console.log("It got here");
-    // setSelectedColor(e.target.value);
   };
 
   const handleColorChange = (color: string, label: string) => {
@@ -129,10 +121,6 @@ export default function Scheduler({ session }: any) {
     focus:outline-none
     -z-10
   `;
-
-  // const schedulerContainer = `
-  // ${openSidebar ? `` : ``}
-  // `
 
   const colorOptions = [
     // { value: "linear-gradient(to right, #f06, #9f6)", label: "Greenish" },

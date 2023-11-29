@@ -1,7 +1,6 @@
-import React, { ReactNode, useState } from "react";
-import supabase from "../../src/components/supabase";
+import React, { useState } from "react";
+import supabase from "../../../src/components/supabase";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { DateTimePicker } from "@/components/ui/date-time-picker";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { DateTime } from "luxon";
@@ -27,9 +26,10 @@ type ModalProps = {
   selectedSchedulers: Scheduler | null; // Assuming Scheduler type is defined somewhere
   fetchActivities: () => void; // Function to refetch activities after submission
   content_name: string
+  session: any
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetchActivities, content_name }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetchActivities, content_name, session }) => {
   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
   const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
     null
@@ -44,6 +44,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
   const [selectedDateTime, setSelectedDateTime] = React.useState<DateTime>(
     DateTime.fromJSDate(date)
   );
+
+  let userId: any;
+
+  if (session) {
+    userId = session.user.id;
+  }
 
   const handleReset = () => {
     setSchedulers([]);
@@ -106,6 +112,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, selectedSchedulers, fetc
       // Save the activity details to the Supabase database
       const { data , error } = await supabase.from("activities").insert([
         {
+          user_id: userId,
           scheduler_id: selectedSchedulers.id,
           activity_name: activityName,
           date_time: isDateSelected ? String(selectedDateTime) : null,

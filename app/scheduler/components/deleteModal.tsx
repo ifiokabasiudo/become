@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import supabase from "../../src/components/supabase";
+import supabase from "../../../src/components/supabase";
 
 type Scheduler = {
   id: number;
@@ -13,7 +13,8 @@ type DeleteModalProps = {
     onClose: () => void;
     selectedSchedulers: Scheduler | null;
     content_name: string;
-    onDelete: (schedulerId: number) => void; // Add this prop
+    onDelete: (schedulerId: number) => void;
+    session: any
   };
   
   const DeleteModal: React.FC<DeleteModalProps> = ({
@@ -21,9 +22,15 @@ type DeleteModalProps = {
     onClose,
     selectedSchedulers,
     content_name,
-    onDelete, // Add this prop
+    onDelete,
+    session
   }) => {
-//   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
+
+    let userId: any;
+
+    if (session) {
+      userId = session.user.id;
+    }
 
   const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -34,7 +41,8 @@ type DeleteModalProps = {
             const { data, error } = await supabase
               .from("schedulers")
               .delete()
-              .eq("id", selectedSchedulers.id);
+              .eq("id", selectedSchedulers.id)
+              .eq("user_id", userId)
     
             if (error) {
               console.error("Error deleting scheduler:", error.message);

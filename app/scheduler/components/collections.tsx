@@ -1,27 +1,7 @@
 import React, { useEffect, useState } from "react";
-import supabase from "../../src/components/supabase";
-import { DateTimePicker } from "@/components/ui/date-time-picker";
-// import * as React from 'react';
+import supabase from "../../../src/components/supabase";
 import { DateTime } from "luxon";
-import { Calendar as CalendarIcon } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { SelectSingleEventHandler } from "react-day-picker";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import DeleteModal from "./deleteModal"
-
-interface DateTimePickerProps {
-  date: Date;
-  setDate: (date: Date) => void;
-}
 import Modal from "./modal";
 
 type Scheduler = {
@@ -34,58 +14,13 @@ type Scheduler = {
 const Collection = ({ session }: any) => {
   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
   const [shouldRunEffect, setShouldRunEffect] = useState(true);
-  const [shouldRunCompleted, setShouldRunCompleted] = useState(true);
   const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
     null
   );
   const [openModal, setOpenModal] = useState(false);
   const [content, setContent] = useState("");
-  const [activityName, setActivityName] = useState("");
-  const [date, setDate] = useState(new Date());
-  const [buttonClicked, setButtonClicked] = useState(false);
   const [completedActivities, setCompletedActivities] = useState<number[]>([]);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [selectedDateTime, setSelectedDateTime] = React.useState<DateTime>(
-    DateTime.fromJSDate(date)
-  );
-
-  const handleSelect: SelectSingleEventHandler = (day, selected) => {
-    const selectedDay = DateTime.fromJSDate(selected);
-    const modifiedDay = selectedDay.set({
-      hour: selectedDateTime.hour,
-      minute: selectedDateTime.minute,
-    });
-
-    setSelectedDateTime(modifiedDay);
-    setDate(modifiedDay.toJSDate());
-  };
-
-  const handleTimeChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { value } = e.target;
-    const hours = Number.parseInt(value.split(":")[0] || "00", 10);
-    const minutes = Number.parseInt(value.split(":")[1] || "00", 10);
-    const modifiedDay = selectedDateTime.set({ hour: hours, minute: minutes });
-
-    setSelectedDateTime(modifiedDay);
-    setDate(modifiedDay.toJSDate());
-  };
-
-  const footer = (
-    <>
-      <div className="px-4 pt-0 pb-4 bg-card text-white rounded-b border-t dark-nav-border-color">
-        <Label>Time</Label>
-        <Input
-          type="time"
-          className="bg-card text-white border dark-nav-border-color"
-          onChange={handleTimeChange}
-          value={selectedDateTime.toFormat("HH:mm")}
-        />
-      </div>
-      {!selectedDateTime && <p>Please pick a day.</p>}
-    </>
-  );
-
-  // }
 
   let userId: any;
 
@@ -121,7 +56,7 @@ const Collection = ({ session }: any) => {
           event: "*",
           schema: "public",
           table: "schedulers",
-          // filter: `id=eq.${userId}`
+          filter: `user_id=eq.${userId}`
         },
         (payload) => {
           console.log("This is the payload: " + payload);
@@ -148,7 +83,8 @@ const Collection = ({ session }: any) => {
       const { data, error } = await supabase
         .from("activities")
         .select("*")
-        .eq("scheduler_id", scheduler.id);
+        .eq("scheduler_id", scheduler.id)
+        .eq("user_id", userId)
       if (error) {
         console.error("Error fetching activities:", error.message);
       } else {
@@ -174,6 +110,7 @@ const Collection = ({ session }: any) => {
           event: "*",
           schema: "public",
           table: "activities",
+          filter: `user_id=eq.${userId}`
         },
         (payload: any) => {
           // Handle real-time changes to activities
@@ -259,7 +196,8 @@ const Collection = ({ session }: any) => {
       const { data, error } = await supabase
         .from("activities")
         .update({ completed: !isCompleted })
-        .eq("id", activityId);
+        .eq("id", activityId)
+        .eq("user_id", userId)
 
       if (error) {
         console.error("Error updating completed status:", error.message);
@@ -275,18 +213,6 @@ const Collection = ({ session }: any) => {
         return prevCompletedActivities.filter((id) => id !== activityId);
       }
     });
-
-      // // Fetch the updated activities from Supabase
-      // const updatedActivities = await supabase
-      //   .from("activities")
-      //   .select("id", { head: true });
-
-      // // Update completedActivities state based on the response
-      // const updatedCompletedActivities = updatedActivities.data?.map(
-      //   (activity) => activity.id
-      // );
-
-      // setCompletedActivities(updatedCompletedActivities || []);
     } catch (error) {
       console.error("Error handling completion:", error);
     }
@@ -426,6 +352,7 @@ const Collection = ({ session }: any) => {
         selectedSchedulers={selectedScheduler}
         content_name={content}
         onDelete={handleDelete}
+        session={session}
       />
 
       <Modal
@@ -434,6 +361,7 @@ const Collection = ({ session }: any) => {
         selectedSchedulers={selectedScheduler}
         fetchActivities={fetchActivities}
         content_name={content}
+        session={session}
       />
     </div>
   );
