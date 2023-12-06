@@ -164,10 +164,14 @@ const Collection = ({ session }: any) => {
 
   const handleDelete = async (deletedSchedulerId: number) => {
     await setShouldRunEffect(false)
-    await setSchedulers((prevSchedulers) =>
+
+    const update = async () => await setSchedulers((prevSchedulers) =>
       prevSchedulers.filter((scheduler) => scheduler.id !== deletedSchedulerId)
     )
-    await setShouldRunEffect(true)
+
+    await update().then(
+      async () => await setShouldRunEffect(true)
+    )
   }
 
   const formatActivityDate = (activityDateTime: string) => {
