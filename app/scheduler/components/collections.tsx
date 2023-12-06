@@ -59,10 +59,12 @@ const Collection = ({ session }: any) => {
           filter: `user_id=eq.${userId}`
         },
         (payload) => {
-          console.log("This is the payload: " + payload);
+          console.log("This is the payload: " + JSON.stringify(payload));
+          if(payload.new){
           setSchedulers(
             (prevSchedulers) => [...prevSchedulers, payload.new] as Scheduler[]
           );
+        }
           console.log(
             "These are the schedules why: " +
               JSON.stringify(schedulers, null, 2)
