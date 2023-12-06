@@ -167,6 +167,7 @@ const Collection = ({ session }: any) => {
     setSchedulers((prevSchedulers) =>
       prevSchedulers.filter((scheduler) => scheduler.id !== deletedSchedulerId)
     );
+    setShouldRunEffect(true)
   }
 
   const formatActivityDate = (activityDateTime: string) => {
