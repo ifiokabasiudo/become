@@ -60,7 +60,7 @@ const Collection = ({ session }: any) => {
         },
         (payload) => {
           console.log("This is the payload: " + JSON.stringify(payload));
-          if(payload.new){
+          if(Object.keys(payload.new).length !== 0){
           setSchedulers(
             (prevSchedulers) => [...prevSchedulers, payload.new] as Scheduler[]
           );
