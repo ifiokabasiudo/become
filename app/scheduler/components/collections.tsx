@@ -30,7 +30,7 @@ const Collection = ({ session }: any) => {
 
   useEffect(() => {
     // Fetch scheduler data from Supabase
-    if(shouldRunEffect) {
+    // if(shouldRunEffect) {
     const fetchSchedulers = async () => {
       const { data, error } = await supabase
         .from("schedulers")
@@ -76,7 +76,7 @@ const Collection = ({ session }: any) => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }
+  // }
   }, [supabase, shouldRunEffect]); // Run this effect only once on component mount
   // Fetch activities data from Supabase
   const fetchActivities = async () => {
