@@ -162,12 +162,12 @@ const Collection = ({ session }: any) => {
     setContent(scheduler.name);
   };
 
-  const handleDelete = (deletedSchedulerId: number) => {
-    setShouldRunEffect(false)
-    setSchedulers((prevSchedulers) =>
+  const handleDelete = async (deletedSchedulerId: number) => {
+    await setShouldRunEffect(false)
+    await setSchedulers((prevSchedulers) =>
       prevSchedulers.filter((scheduler) => scheduler.id !== deletedSchedulerId)
-    );
-    setShouldRunEffect(true)
+    )
+    await setShouldRunEffect(true)
   }
 
   const formatActivityDate = (activityDateTime: string) => {
