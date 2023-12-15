@@ -11,6 +11,7 @@ export default function Scheduler({ session }: any) {
   const [schedulerName, setSchedulerName] = useState("");
   const [selectedColor, setSelectedColor] = useState("none"); 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isDone, setIsDone] = useState<boolean>(false);
   const [selectedLabel, setSelectedlabel] = useState(
     "Choose your Schedule Color"
   );
@@ -68,7 +69,9 @@ export default function Scheduler({ session }: any) {
 
       if (error) {
         console.error("Error adding scheduler:", error.message);
+        return
       }
+      setIsDone(!isDone)
     }
     // Close the sidebar after submission
     closeModal();
@@ -279,7 +282,8 @@ export default function Scheduler({ session }: any) {
         </div>
 
         <div id="collections">
-          <Collection session={session} />
+          <Collection session={session}
+          isDone = {isDone} />
         </div>
       </div>
     </div>

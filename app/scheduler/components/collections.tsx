@@ -11,7 +11,7 @@ type Scheduler = {
   color: string;
 };
 
-const Collection = ({ session }: any) => {
+const Collection = ({ session, isDone }: any) => {
   const [schedulers, setSchedulers] = useState<Scheduler[]>([]);
   const [shouldRunEffect, setShouldRunEffect] = useState(true);
   const [selectedScheduler, setSelectedScheduler] = useState<Scheduler | null>(
@@ -77,7 +77,7 @@ const Collection = ({ session }: any) => {
       supabase.removeChannel(channel);
     };
   // }
-  }, [supabase, shouldRunEffect]); // Run this effect only once on component mount
+  }, [supabase, shouldRunEffect, isDone]); // Run this effect only once on component mount
   // Fetch activities data from Supabase
   const fetchActivities = async () => {
     // Fetch activities associated with each scheduler
