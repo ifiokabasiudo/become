@@ -39,11 +39,11 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
 
       <div className="flex flex-col text-left w">      
-      <h1 className="text-6xl pb-5">Become Coming Soon...</h1>
-      <div className="text-xl pb-6">We're hard at work building the finished web app</div>
-      <div className="text-xl pb-2">These are the list of features the app will contain</div>
+      <h1 className="text-6xl pb-5">Become Scheduler...</h1>
+      {/* <div className="text-xl pb-6">We're hard at work building the finished web app</div>
+      <div className="text-xl pb-2">These are the list of features the app will contain</div> */}
       <div className="text-xl pb-3">
-        {
+        {/* {
           features.map((feature)=>(
             <div className="text-xl pb-3" key={feature.id}>
               {feature.number}{" "}{feature.name}
@@ -60,12 +60,12 @@ export default function Home() {
               }
             </div>
           ))
-        }
+        } */}
       </div>
       <Link
         href={"https://become-one.vercel.app/login"}
       >
-      <h4 className="text-2xl pr-3 text-slate-400 transition-all duration-1000 group">Click to checkout our <span className="text-white group-hover:text-slate-400">schedular</span> in the meantime       
+      <h4 className="text-2xl pr-3 text-slate-400 transition-all duration-1000 group">Click to checkout our <span className="text-white group-hover:text-slate-400">schedular</span>       
   
       <svg
           xmlns="http://www.w3.org/2000/svg"
