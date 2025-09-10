@@ -23,6 +23,25 @@ A productivity-focused task manager designed to go beyond simple to-do lists. Bu
 
 ---
 
+
+## 🧠 Project Motivation
+I built **Become** as a step up from a simple to-do list app. I wanted a project that would:  
+- Help me solidify my **Next.js** and **Tailwind CSS** skills.  
+- Give me hands-on practice with **Supabase** authentication, databases, and real-world data modeling.  
+- Explore how to make productivity apps more engaging with **color coding, grouping, and reminders**.  
+
+This project started as a personal learning experiment but evolved into a polished app I now showcase in my portfolio.  
+
+---
+
+## 🏗️ How It Was Built
+- **Frontend**: Developed with **Next.js (SSR)** for fast, SEO-friendly pages, and **Tailwind CSS** for a responsive UI.  
+- **Auth & Database**: Implemented with **Supabase**, handling secure sign-ups, logins, and storage of tasks.  
+- **Reminders**: Each task can store a reminder timestamp, allowing future integration with cron jobs or push notifications.  
+- **Deployment**: Hosted seamlessly on **Vercel** for production-ready performance.  
+
+---
+
 ## 📸 Screenshots
 ---
 <img width="1366" height="640" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/e12880fa-0a6d-4015-a92d-2f82e8e55db7" />
