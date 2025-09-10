@@ -2,7 +2,7 @@
 
 A productivity-focused task manager designed to go beyond simple to-do lists. Built with **Next.js, Tailwind CSS, and Supabase**, it lets users organize activities by color, group tasks, and receive reminders — making it simple to stay consistent and achieve goals.  
 
-🚀 **Live Demo**: [https://become.vercel.app](https://become.vercel.app)  
+🚀 **Live Demo**: [https://become.vercel.app](https://become-one.vercel.app)  
 
 ---
 
