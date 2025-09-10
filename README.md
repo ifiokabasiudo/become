@@ -38,7 +38,7 @@ To run Become locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/become.git
+git clone https://github.com/ifiokabasiudo/become.git
 cd become
 
 # Install dependencies
